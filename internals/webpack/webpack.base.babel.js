@@ -13,6 +13,10 @@ module.exports = (options) => ({
   }, options.output), // Merge with env dependent settings
   module: {
     loaders: [{
+      test: /\.tsx?$/, // Transform all .ts(x) files required somewhere with ts-loader, Babel
+      loaders: ['babel?' + JSON.stringify(options.babelQuery), 'ts-loader'],
+      exclude: /node_modules/,
+    }, {
       test: /\.js$/, // Transform all .js files required somewhere with Babel
       loader: 'babel',
       exclude: /node_modules/,
@@ -67,6 +71,8 @@ module.exports = (options) => ({
     extensions: [
       '.js',
       '.jsx',
+      '.ts',
+      '.tsx',
       '.react.js',
     ],
     mainFields: [

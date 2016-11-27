@@ -24,8 +24,9 @@ module.exports = require('./webpack.base.babel')({
   // Add hot reloading in development
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
+    path.join(process.cwd(), 'app/app.tsx'), // Start with js/app.tsx
   ],
 
   // Don't use hashes in dev mode for better performance
@@ -39,7 +40,7 @@ module.exports = require('./webpack.base.babel')({
 
   // Tell babel that we want to hot-reload
   babelQuery: {
-    presets: ['react-hmre'],
+    plugins: ['react-hot-loader/babel']
   },
 
   // Emit a source map for easier debugging
