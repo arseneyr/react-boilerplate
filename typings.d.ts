@@ -9,7 +9,7 @@ declare module '*.css' {
 
 interface Window {
   Intl: any;
-  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(f: any[]): any;
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: <S>(...f: Redux.GenericStoreEnhancer[]) => Redux.StoreEnhancer<S>;
 }
 
 interface NodeModule {
